@@ -1,0 +1,26 @@
+{
+  "name": "radio-monde",
+  "version": "1.0.0",
+  "description": "Radio Monde - écoute des radios du monde entier",
+  "author": "hervewong",
+  "main": "electron/main.js",
+  "radioApp": "ultimate-world-radio",
+  "scripts": {
+    "build:site": "node scripts/build.mjs",
+    "start": "node scripts/build.mjs && electron .",
+    "dist": "node scripts/build.mjs && electron-builder --win --publish never"
+  },
+  "devDependencies": {
+    "electron": "45.3.4",
+    "electron-builder": "26.18.0"
+  },
+  "build": {
+    "appId": "fr.hervewong.radiomonde",
+    "productName": "Radio Monde",
+    "directories": { "output": "release" },
+    "files": ["electron/**", "site/ultimate-world-radio/**", "package.json"],
+    "win": { "target": ["nsis", "portable"], "icon": "site/ultimate-world-radio/icon-512.png" },
+    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true, "artifactName": "Radio-Monde-Installateur.exe" },
+    "portable": { "artifactName": "Radio-Monde-Portable.exe" }
+  }
+}
